@@ -1,0 +1,60 @@
+" Plugins - we load these first
+call plug#begin('~/.config/nvim/plugged')
+
+Plug 'airblade/vim-gitgutter'
+Plug 'altercation/vim-colors-solarized'
+Plug 'easymotion/vim-easymotion'
+Plug 'mhinz/vim-startify'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+call plug#end()
+
+"
+" Neovim settings
+"
+
+" General
+let mapleader = ','             " Override default leader key
+set autoread                    " Automatically reload files when changed outside vim
+set cursorline                  " highlight current line
+set noshowmode                  " We show the current mode with airline
+set number                      " Show the absolute line number the cursor is on
+syntax enable                   " Enable syntax highlighting
+
+" Search
+set hlsearch                    " Highlight search terms
+set ignorecase                  " Ignore casing of searches
+set incsearch                   " Find as you type search
+set showmatch                   " Show matching brackets/parenthesis
+set smartcase                   " Be smart about case sensitivity when searching
+
+" Mouse
+set mouse=a                     " Automatically enable mouse usage
+set mousehide                   " Hide the mouse cursor while typing
+
+" Formatting
+set nowrap                      " Do not wrap long lines
+set autoindent                  " Indent at the same level of the previous line
+set shiftwidth=4                " Use indents of 4 spaces
+set expandtab                   " Tabs are spaces, not tabs
+set tabstop=4                   " An indentation every four columns
+set softtabstop=4               " Let backspace delete indent
+set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
+set splitright                  " Puts new vsplit windows to the right of the current
+set splitbelow                  " Puts new split windows to the bottom of the current
+
+"
+" Plugin settings
+"
+
+" Airline
+let g:airline_powerline_fonts = 1
+
+" Solarized
+set background=dark
+colorscheme solarized
