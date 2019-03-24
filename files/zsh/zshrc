@@ -1,0 +1,32 @@
+#
+# User configuration sourced by interactive shells
+#
+
+# Define Zim location
+ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
+
+# Start Zim
+[[ -s ${ZIM_HOME}/zimfw.zsh ]] && source ${ZIM_HOME}/zimfw.zsh
+
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.zhistfile
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory autocd notify
+bindkey -e
+# End of lines configured by zsh-newuser-install
+
+# Source files if they exist
+function zsourcefile {
+    [[ -s $1 ]] && source $1
+}
+## Functions and aliases
+zsourcefile ${HOME}/.zfunctions
+zsourcefile ${HOME}/.zaliases
+## Misc files
+zsourcefile ${HOME}/.chef/functions.zsh
+zsourcefile ${HOME}/.fzf.zsh
+zsourcefile /usr/local/share/chtf/chtf.sh
+
+# Use Neovim as default editor
+export EDITOR=nvim
