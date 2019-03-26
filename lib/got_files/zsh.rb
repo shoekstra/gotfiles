@@ -15,6 +15,7 @@ module GotFiles
     end
 
     def setup
+      install_fzf
       add_shell
       set_shell
 
@@ -37,6 +38,13 @@ module GotFiles
 
       puts 'Adding zsh to standard shell list ...'
       run %(echo '/usr/local/bin/zsh' | sudo tee -a /private/etc/shells)
+    end
+
+    def install_fzf
+      return if File.exist? File.expand_path('~/.fzf')
+
+      brew_install_if_missing('fzf')
+      run %($(brew --prefix)/opt/fzf/install --key-bindings --completion --no-update-rc)
     end
 
     def set_shell
