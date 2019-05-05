@@ -19,19 +19,22 @@ call plug#end()
 "
 
 " General
+filetype plugin indent on       " Automatically detect file types.
 let mapleader = ','             " Override default leader key
 set autoread                    " Automatically reload files when changed outside vim
-set cursorline                  " highlight current line
+set backspace=indent,eol,start  " Backspace for dummies
+set cursorline                  " Highlight current line
+set inccommand=nosplit          " Enable live substitutions
 set noshowmode                  " We show the current mode with airline
 set number                      " Show the absolute line number the cursor is on
+set showmatch                   " Show matching brackets/parenthesis
 syntax enable                   " Enable syntax highlighting
 
 " Search
 set hlsearch                    " Highlight search terms
-set ignorecase                  " Ignore casing of searches
-set incsearch                   " Find as you type search
-set showmatch                   " Show matching brackets/parenthesis
-set smartcase                   " Be smart about case sensitivity when searching
+set incsearch                   " Find the next match as we type the search
+set ignorecase                  " Ignore case when searching...
+set smartcase                   " ...unless we type a capital
 
 " Mouse
 set mouse=a                     " Automatically enable mouse usage
