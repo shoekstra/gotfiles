@@ -4,6 +4,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'easymotion/vim-easymotion'
+Plug 'ekalinin/Dockerfile.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'mhinz/vim-startify'
 Plug 'tmux-plugins/vim-tmux-focus-events'
