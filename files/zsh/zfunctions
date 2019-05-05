@@ -1,0 +1,8 @@
+# Recursively vimdiff files in two directories
+function vimdiffr {
+  IFS=$'\n'
+  for line in `/usr/bin/diff -rq --exclude=.git $1 $2 | grep differ`; do
+    diff=(${(ps: :)${line}})
+    nvim -d ${diff[2]} ${diff[4]}
+  done
+}
