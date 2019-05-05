@@ -12,6 +12,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -58,6 +59,16 @@ set splitbelow                  " Puts new split windows to the bottom of the cu
 
 " Airline
 let g:airline_powerline_fonts = 1
+
+" Ale
+let g:ale_set_signs = 1
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '✖'
+let g:ale_sign_warning = '⚠'
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " GoLang
 let g:go_fmt_command = "goimports"
