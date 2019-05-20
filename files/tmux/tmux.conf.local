@@ -308,9 +308,11 @@ bind-key C-a last-window
 # move status line to top
 #set -g status-position top
 
-# List of TPM plugins
-set -g @plugin 'tmux-plugins/tpm'
-set -g @plugin 'tmux-plugins/tmux-sensible'
+# List of plugins
+set -g @tpm_plugins '          \
+  tmux-plugins/tpm             \
+  tmux-plugins/tmux-sensible   \
+'
 
 # Workaround for automatic TPM installation
 # See https://github.com/tmux-plugins/tpm/issues/105
