@@ -8,12 +8,14 @@ module GotFiles
       brew_install_if_missing('tmux', 'Tmux')
 
       git('https://github.com/gpakosz/.tmux.git',
-	  "#{ENV['HOME']}/.tmux",
-	  "Oh My Tmux!")
+	      "#{ENV['HOME']}/.tmux",
+	      'Oh My Tmux!'
+      )
 
       git('https://github.com/tmux-plugins/tpm',
-	  "#{ENV['HOME']}/.tmux/plugins/tpm",
-	  "Tmux Plugin Manager")
+	      "#{ENV['HOME']}/.tmux/plugins/tpm",
+	      'Tmux Plugin Manager'
+      )
     end
 
     def setup
