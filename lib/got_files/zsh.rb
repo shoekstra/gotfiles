@@ -34,7 +34,7 @@ module GotFiles
       install_powerlevel10k
 
       unless ENV['SHELL'].include?('zsh')
-        puts 'Open a new terminal and run this task again to complete ZSH setup'
+        puts 'Open a new terminal and run this task again to complete ZSH setup...'
 
         return
       end
@@ -46,7 +46,7 @@ module GotFiles
       shells = File.readlines('/private/etc/shells')
       return if shells.grep(%r{/usr/local/bin/zsh}).any?
 
-      puts 'Adding zsh to standard shell list ...'
+      puts 'Adding zsh to standard shell list...'
       run %(echo '/usr/local/bin/zsh' | sudo tee -a /private/etc/shells)
     end
 
@@ -72,7 +72,7 @@ module GotFiles
     def set_shell
       return if ENV['SHELL'].include?('zsh')
 
-      puts 'Setting zsh as your default shell ...'
+      puts 'Setting zsh as your default shell...'
       run %(chsh -s /usr/local/bin/zsh)
     end
   end

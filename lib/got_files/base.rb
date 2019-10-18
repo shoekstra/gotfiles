@@ -5,18 +5,18 @@ module GotFiles
     def git(url, path, msg = nil)
       if File.directory?(path)
         unless `git -C "#{path}" remote -v`.split(/\n/).grep(/origin/).first.match(url)
-          puts "[Directory already exists] Moving #{path} to #{path}_backup ..."
+          puts "[Directory already exists] Moving #{path} to #{path}_backup..."
           system %(mv "#{path}" "#{path}_backup")
         end
 
-        puts "Updating #{msg} ..." if msg
+        puts "Updating #{msg}..." if msg
         system %(git -C "#{path}" pull -q origin master)
         system %(git -C "#{path}" submodule -q update)
 
-	    return
+        return
       end
 
-      puts "Installing #{msg} ..." if msg
+      puts "Installing #{msg}..." if msg
       system %(git clone -q #{url} #{path})
       system %(git -C "#{path}" submodule -q init)
       system %(git -C "#{path}" submodule -q update)
@@ -36,7 +36,7 @@ module GotFiles
     def brew_install_if_missing(package, package_name = nil)
       return if package_installed?(package)
 
-      puts "\nInstalling #{package_name} ..." if package_name
+      puts "\nInstalling #{package_name}..." if package_name
       run %(brew install #{package})
     end
 
@@ -46,7 +46,7 @@ module GotFiles
       return unless File.exist?(target)
       return if File.symlink?(target) && File.readlink(target) == source
 
-      puts "Overwriting #{target}, leaving original at #{target}_backup ..."
+      puts "Overwriting #{target}, leaving original at #{target}_backup..."
       system("mv '#{target}' '#{target}_backup'")
     end
 
