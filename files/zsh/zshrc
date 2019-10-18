@@ -2,11 +2,14 @@
 # User configuration sourced by interactive shells
 #
 
-# Define Zim location
-ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
+# Set powerlevel10k dir
+POWERLEVEL10K_INSTALLATION_PATH=~/.zim/modules/prompt/external-themes/powerlevel10k/powerlevel10k.zsh-theme
 
-# Start Zim
-[[ -s ${ZIM_HOME}/zimfw.zsh ]] && source ${ZIM_HOME}/zimfw.zsh
+# Define zim location
+export ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
+
+# Start zim
+[[ -s ${ZIM_HOME}/init.zsh ]] && source ${ZIM_HOME}/init.zsh
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.zhistfile
@@ -18,7 +21,7 @@ bindkey -e
 
 # Source files if they exist
 function zsourcefile {
-    [[ -s $1 ]] && source $1
+    [[ -s "$1" ]] && source $1
 }
 ## Functions and aliases
 zsourcefile ${HOME}/.zfunctions
