@@ -1,0 +1,9 @@
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core"
+brew "dockutil", link: false
+brew "mas", link: false
+brew "tree"
+cask "google-chrome"
+cask "iterm2"
+cask "slack"

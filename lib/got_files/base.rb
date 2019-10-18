@@ -2,6 +2,10 @@ module GotFiles
   class Base
     include FileUtils
 
+    def command_exist?(command)
+      system("which #{command} > /dev/null 2>&1")
+    end
+
     def git(url, path, msg = nil)
       if File.directory?(path)
         unless `git -C "#{path}" remote -v`.split(/\n/).grep(/origin/).first.match(url)
@@ -22,11 +26,11 @@ module GotFiles
       system %(git -C "#{path}" submodule -q update)
     end
 
-    def install_file(file)
+    def install_file(file, dot = true)
       files = [file].flatten.map { |f| File.expand_path(f) }
       files.each do |f|
         source = install_file_source(f)
-        target = install_file_target(f)
+        target = install_file_target(f, dot)
 
         backup_file(source, target)
         create_symlink(source, target)
@@ -69,9 +73,9 @@ module GotFiles
       end
     end
 
-    def install_file_target(file)
+    def install_file_target(file, dot = true)
       target = "#{ENV['HOME']}/"
-      target << '.' unless has_dot?(file)
+      target << '.' unless has_dot?(file) || dot == false
       target << File.basename(file)
     end
 
