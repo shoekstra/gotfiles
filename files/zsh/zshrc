@@ -33,3 +33,7 @@ zsourcefile /usr/local/share/chtf/chtf.sh
 
 # Use Neovim as default editor
 export EDITOR=nvim
+
+# Ready for Go
+export GOPATH=~/go
+export PATH=~/bin:$GOPATH/bin:$PATH
