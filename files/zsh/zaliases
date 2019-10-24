@@ -3,8 +3,8 @@ alias vim="nvim -O"
 alias vimdiff="nvim -d"
 
 # Use a coloured ls
-alias dircolors="gdircolors"
-alias ls="/usr/local/bin/gls --color"
+alias l="ls"
+alias ls="ls --color=auto"
 
 # Kubernetes
 (($+commands[kubectl])) && alias k="kubectl"

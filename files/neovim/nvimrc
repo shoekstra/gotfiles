@@ -1,19 +1,27 @@
+let g:python3_host_prog = '/usr/local/bin/python3'
+
 " Plugins - we load these first
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+Plug 'dense-analysis/ale'
 Plug 'easymotion/vim-easymotion'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'godlygeek/tabular'
+Plug 'hashivim/vim-hashicorp-tools'
 Plug 'mhinz/vim-startify'
+Plug 'sirver/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'valloric/youcompleteme', { 'do': 'python3 ./install.py --go-completer' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'w0rp/ale'
+Plug 'wellle/tmux-complete.vim'
 
 call plug#end()
 
@@ -32,6 +40,15 @@ set noshowmode                  " We show the current mode with airline
 set number                      " Show the absolute line number the cursor is on
 set showmatch                   " Show matching brackets/parenthesis
 syntax enable                   " Enable syntax highlighting
+
+" Clipboard
+if has('clipboard')
+    if has('unnamedplus') " When possible use + register for copy-paste
+        set clipboard=unnamed,unnamedplus
+    else " On mac and Windows, use * register for copy-paste
+        set clipboard=unnamed
+    endif
+endif
 
 " Search
 set hlsearch                    " Highlight search terms
@@ -88,6 +105,24 @@ au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
 au FileType go nmap <leader>co <Plug>(go-coverage)
 
+" Hashicorp vim plugins
+let g:terraform_align=1
+let g:terraform_commentstring='//%s'
+let g:terraform_fmt_on_save=1
+
+" Language server
+let g:LanguageClient_serverCommands = {
+    \ 'go' : ['go-langserver', '-gocodecompletion'],
+    \ }
+
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
 " Solarized
 set background=dark
 colorscheme solarized
+
+let g:UltiSnipsExpandTrigger = "<C-j>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<S-tab>"
