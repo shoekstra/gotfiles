@@ -1,3 +1,5 @@
+require 'got_files/string'
+
 module GotFiles
   class Base
     include FileUtils
@@ -44,6 +46,17 @@ module GotFiles
       run %(brew install #{package})
     end
 
+    def brew_cask_install_if_missing(package, package_name = nil)
+      return if cask_package_installed?(package)
+
+      puts "\nInstalling #{package_name}..." if package_name
+      run %(brew install #{package})
+    end
+
+    def plistbuddy(command, plist)
+      system %(/usr/libexec/PlistBuddy -c '#{command}' ~/Library/Preferences/#{plist} )
+    end
+
     private
 
     def backup_file(source, target)
@@ -77,6 +90,10 @@ module GotFiles
       target = "#{ENV['HOME']}/"
       target << '.' unless has_dot?(file) || dot == false
       target << File.basename(file)
+    end
+
+    def cask_package_installed?(package)
+      system("brew cask list | grep ^#{package}$", :out => File::NULL)
     end
 
     def package_installed?(package)
