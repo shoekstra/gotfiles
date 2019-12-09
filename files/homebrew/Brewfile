@@ -3,6 +3,7 @@ tap "homebrew/cask"
 tap "homebrew/core"
 brew "dockutil", link: false
 brew "mas", link: false
+brew "pwgen"
 brew "tree"
 cask "google-chrome"
 cask "iterm2"

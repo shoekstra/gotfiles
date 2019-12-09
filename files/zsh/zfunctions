@@ -1,3 +1,17 @@
+# Generate a random alphanumerical string
+genpasswd() {
+  local l=$1
+  [[ -n $l ]] || l=16
+  pwgen -BCns $l 1
+}
+
+# Generate a strong random string with special characters
+genstrongpasswd() {
+  local l=$1
+  [[ -n $l ]] || l=16
+  pwgen -BCnsy $l 1
+}
+
 # Recursively vimdiff files in two directories
 function vimdiffr {
   IFS=$'\n'
