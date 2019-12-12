@@ -1,3 +1,4 @@
+" Path to python3 bin
 let g:python3_host_prog = '/usr/local/bin/python3'
 
 " Plugins - we load these first
@@ -13,6 +14,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'godlygeek/tabular'
 Plug 'hashivim/vim-hashicorp-tools'
 Plug 'mhinz/vim-startify'
+Plug 'raimondi/delimitmate'
 Plug 'sirver/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-fugitive'
@@ -39,6 +41,7 @@ set inccommand=nosplit          " Enable live substitutions
 set noshowmode                  " We show the current mode with airline
 set number                      " Show the absolute line number the cursor is on
 set showmatch                   " Show matching brackets/parenthesis
+set scrolloff=5                 " Show at least 5 lines above or below the cursor
 syntax enable                   " Enable syntax highlighting
 
 " Clipboard
