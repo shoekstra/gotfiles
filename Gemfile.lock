@@ -1,13 +1,15 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    highline (2.0.3)
     rake (12.3.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  highline
   rake
 
 BUNDLED WITH
-   1.16.1
+   1.17.2

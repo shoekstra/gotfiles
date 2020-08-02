@@ -1,5 +1,3 @@
-require 'got_files/string'
-
 module GotFiles
   class Base
     include FileUtils
