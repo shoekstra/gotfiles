@@ -16,15 +16,8 @@ module GotFiles
       # Allow access to the clipboard
       system('defaults write com.googlecode.iterm2 "AllowClipboardAccess" -bool true')
 
-      # Enable using Powerline Glyphs, so we don't need to install a Powerline font
-      system('defaults write com.googlecode.iterm2 "Draw Powerline Glyphs" -bool true')
-
       # Disable warning when quitting
       system('defaults write com.googlecode.iterm2 PromptOnQuit -bool false')
-
-      # Set font to Monaco 14
-      plistbuddy('Set "New Bookmarks":0:"Normal Font" Monaco 14', 'com.googlecode.iTerm2.plist') 
-      plistbuddy('Set "New Bookmarks":0:"Use Non-ASCII Font" 0', 'com.googlecode.iTerm2.plist')
 
       # Unlimited Scrollback
       plistbuddy('Set "New Bookmarks":0:"Unlimited Scrollback" true', 'com.googlecode.iTerm2.plist')

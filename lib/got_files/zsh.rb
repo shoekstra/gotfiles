@@ -11,27 +11,17 @@ module GotFiles
                 force: true)
       end
 
-      brew_install_if_missing('zsh', 'Zsh')
-
-      git('https://github.com/zimfw/zimfw.git',
-          '${ZDOTDIR:-${HOME}}/.zim',
-          'Zsh IMproved FrameWork'
-      )
-
-      %w(zimrc zshrc zlogin).each do |zfile|
-        FileUtils.rm_f("#{ENV['HOME']}/.#{zfile}")
-      end
+      system('curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh')
 
       install_file Dir.glob('files/zsh/*')
 
-      puts 'Open a new shell and run "source ${ZDOTDIR:-${HOME}}/.zlogin" to complete setup...'
+      system('zsh ~/.zim/zimfw.zsh install')
     end
 
     def setup
       add_shell
       set_shell
       install_fzf
-      install_powerlevel10k
 
       unless ENV['SHELL'].include?('zsh')
         puts 'Open a new terminal and run this task again to complete ZSH setup...'
@@ -55,18 +45,6 @@ module GotFiles
 
       brew_install_if_missing('fzf')
       run %($(brew --prefix)/opt/fzf/install --key-bindings --completion --no-update-rc)
-    end
-
-    def install_powerlevel10k
-      git('https://github.com/romkatv/powerlevel10k.git',
-          '${ZDOTDIR:-${HOME}}/.zim/modules/prompt/external-themes/powerlevel10k',
-          'powerlevel10k'
-      )
-
-      symlink("#{File.expand_path '~'}/.zim/modules/prompt/external-themes/powerlevel10k/powerlevel10k.zsh-theme",
-              "#{File.expand_path '~'}/.zim/modules/prompt/functions/prompt_powerlevel10k_setup",
-              force: true
-      )
     end
 
     def set_shell
