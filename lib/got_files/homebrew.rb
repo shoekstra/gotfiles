@@ -12,7 +12,7 @@ module GotFiles
     def install
       return if installed?
 
-      system('ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"')
+      system('/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"')
     end
 
     def installed?
