@@ -25,13 +25,7 @@ module GotFiles
       # Reset the preferences cache
       system %(killall cfprefsd)
 
-      if ENV['TERM_PROGRAM'] == 'iTerm.app'
-        require 'io/console'                                                                                                       
-
-        puts 'Press Enter to close iTerm2 for settings to take effect...'
-        STDIN.getch                                                                                                              
-        system %(killall iTerm2)
-      end
+      puts 'Restart iTerm2 using ⌘+Q to settings to take effect...'
     end
   end
 end
