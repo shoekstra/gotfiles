@@ -48,7 +48,7 @@ module GotFiles
       return if cask_package_installed?(package)
 
       puts "\nInstalling #{package_name}..." if package_name
-      run %(brew install #{package})
+      run %(brew cask install #{package})
     end
 
     def plistbuddy(command, plist)
