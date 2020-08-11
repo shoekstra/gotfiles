@@ -37,5 +37,8 @@ zmodule zsh-users/zsh-syntax-highlighting
 zmodule zsh-users/zsh-history-substring-search
 # }}} End configuration added by Zim install
 
+# Setup shell for GPG agent.
+zmodule ohmyzsh/ohmyzsh -n gpg-agent -s plugins/gpg-agent/gpg-agent.plugin.zsh
+
 # Powerlevel10k prompt theme.
 zmodule romkatv/powerlevel10k
