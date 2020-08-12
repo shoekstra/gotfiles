@@ -1,3 +1,12 @@
+# Source chtf
+if [[ ! -f /usr/local/opt/chtf/share/chtf/chtf.sh ]]; then
+    echo "Installing chtf..."
+    brew install Yleisradio/terraforms/chtf > /dev/null 2>&1
+    source "/usr/local/opt/chtf/share/chtf/chtf.sh"
+else
+    source "/usr/local/opt/chtf/share/chtf/chtf.sh"
+fi
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
