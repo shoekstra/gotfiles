@@ -1,10 +1,20 @@
 require 'got_files/base'
 
 module GotFiles
-  class Iterm < Base
+  class Terminal < Base
 
     def install
       brew_cask_install_if_missing('iterm2', 'iTerm2')
+
+      brew_install_if_missing('rename', 'rename')
+
+      brew_install_if_missing('fzf', 'fzf')
+      system('$(brew --prefix)/opt/fzf/install --key-bindings --no-update-rc --no-bash --no-fish --completion', :out => File::NULL)
+
+      # Git tools
+      brew_install_if_missing('hub', 'hub')
+      brew_install_if_missing('github/gh/gh', 'GitHub CLI')
+      brew_install_if_missing('zaquestion/tap/lab', 'GitLab CLI')
     end
 
     def setup

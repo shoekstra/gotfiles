@@ -3,6 +3,8 @@
 # Modules
 # -------
 
+# Automatically load environment variables from a .env file in the current working directory.
+zmodule shoekstra/env-zsh -n env
 # Sets sane Zsh built-in environment options.
 zmodule environment
 # Provides handy git aliases and functions.
@@ -39,6 +41,9 @@ zmodule zsh-users/zsh-history-substring-search
 
 # Setup shell for GPG agent.
 zmodule ohmyzsh/ohmyzsh -n gpg-agent -s plugins/gpg-agent/gpg-agent.plugin.zsh
+
+# Provides a convenient way to load ssh-agent.
+zmodule ssh
 
 # Powerlevel10k prompt theme.
 zmodule romkatv/powerlevel10k
