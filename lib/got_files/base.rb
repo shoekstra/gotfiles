@@ -37,18 +37,18 @@ module GotFiles
       end
     end
 
-    def brew_install_if_missing(package, package_name = nil)
-      return if package_installed?(package)
+    def brew_install_if_missing(package, name = nil)
+      return if package_installed?(package_name(package))
 
-      puts "\nInstalling #{package_name}..." if package_name
-      run %(brew install #{package})
+      puts "Installing #{name}..." if name
+      system("brew install #{package}", :out => File::NULL)
     end
 
-    def brew_cask_install_if_missing(package, package_name = nil)
-      return if cask_package_installed?(package)
+    def brew_cask_install_if_missing(package, name = nil)
+      return if cask_package_installed?(package_name(package))
 
-      puts "\nInstalling #{package_name}..." if package_name
-      run %(brew cask install #{package})
+      puts "Installing #{name}..." if name
+      system("brew cask install #{package}", :out => File::NULL)
     end
 
     def plistbuddy(command, plist)
@@ -96,6 +96,11 @@ module GotFiles
 
     def package_installed?(package)
       system("brew list | grep ^#{package}$", :out => File::NULL)
+    end
+
+    def package_name(package)
+      return package.split('/')[-1] if package.include?('/')
+      package
     end
 
     def run(cmd)
