@@ -9,6 +9,8 @@ zmodule shoekstra/env-zsh -n env
 zmodule environment
 # Provides handy git aliases and functions.
 zmodule git
+# git clone and change directory by a single command
+zmodule shoekstra/gitcd.plugin.zsh -n gitcd
 # Applies correct bindkeys for input events.
 zmodule input
 # Sets a custom terminal title.
