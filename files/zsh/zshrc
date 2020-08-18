@@ -138,6 +138,9 @@ bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 # }}} End configuration added by Zim install
 
+bindkey "^[[1~" beginning-of-line # Move to beginning of line with Fn+Left
+bindkey "^[[4~" end-of-line # Move to end of line with Fn+Right
+
 # Source files if they exist
 function zsource {
     [[ -s "$1" ]] && source $1
