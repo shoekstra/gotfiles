@@ -1,0 +1,19 @@
+# Start configuration added by Zim install {{{
+#
+# User configuration sourced by all invocations of the shell
+#
+
+# Define Zim location
+: ${ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim}
+# }}} End configuration added by Zim install
+
+# Use Neovim as the default editor
+export EDITOR=nvim
+
+# Set locale
+export LANG=en_GB.UTF-8
+export LC_ALL=en_GB.UTF-8
+export LANGUAGE=en_GB.UTF-8
+
+# Update path
+export PATH=~/bin:$PATH
