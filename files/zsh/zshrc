@@ -152,3 +152,12 @@ zsource ~/.fzf.zsh                  # Setup fzf
 zsource ${HOME}/.zaliases           # Load aliases
 zsource ${HOME}/.zfunctions         # Load functions
 zsource ${HOME}/.chef/functions.zsh # Load Chef functions
+
+# Kubernetes
+if (($+commands[kubectl])); then
+    source <(kubectl completion zsh)
+    alias k="kubectl"
+    complete -F __start_kubectl k
+fi
+(($+commands[kubectx])) && alias kc="kubectx"
+(($+commands[kubens])) && alias kns="kubens"

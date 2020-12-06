@@ -8,8 +8,3 @@ alias ls="ls --color=auto"
 
 # Git
 alias ga="git add"
-
-# Kubernetes
-(($+commands[kubectl])) && alias k="kubectl"
-(($+commands[kubectx])) && alias kc="kubectx"
-(($+commands[kubens])) && alias kns="kubens"
