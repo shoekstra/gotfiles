@@ -45,10 +45,10 @@ module GotFiles
     end
 
     def brew_cask_install_if_missing(package, name = nil)
-      return if cask_package_installed?(package_name(package))
+      return if package_installed?(package_name(package))
 
       puts "Installing #{name}..." if name
-      system("brew cask install #{package}", :out => File::NULL)
+      system("brew install --cask #{package}", :out => File::NULL)
     end
 
     def plistbuddy(command, plist)
@@ -88,10 +88,6 @@ module GotFiles
       target = "#{ENV['HOME']}/"
       target << '.' unless has_dot?(file) || dot == false
       target << File.basename(file)
-    end
-
-    def cask_package_installed?(package)
-      system("brew cask list | grep ^#{package}$", :out => File::NULL)
     end
 
     def package_installed?(package)
