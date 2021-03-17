@@ -56,7 +56,9 @@ module GotFiles
     end
 
     def install_zim
-      system('curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh')
+      unless File.exists?(File.join(ENV['HOME'], '.zim'))
+        system('curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh')
+      end
 
       install_file Dir.glob('files/zsh/*')
 
