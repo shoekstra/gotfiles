@@ -12,3 +12,7 @@ alias gfo="git fetch origin"
 alias grom="git rebase origin/master"
 alias gsuk="git stash -u -k"
 alias gwds="git diff --no-ext-diff --staged"
+
+# Kubernetes
+(($+commands[kubectx])) && alias kc="kubectx"
+(($+commands[kubens])) && alias kns="kubens"
