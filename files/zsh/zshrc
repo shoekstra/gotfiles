@@ -165,4 +165,5 @@ if (($+commands[kubectl])); then
 fi
 
 autoload -U +X bashcompinit && bashcompinit
+(($+commands[aws])) && complete -o nospace -C /usr/local/bin/aws_completer aws
 (($+commands[terraform])) && complete -o nospace -C /usr/local/bin/terraform terraform
