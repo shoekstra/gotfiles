@@ -141,6 +141,23 @@ bindkey -M vicmd 'j' history-substring-search-down
 bindkey "^[[1~" beginning-of-line # Move to beginning of line with Fn+Left
 bindkey "^[[4~" end-of-line # Move to end of line with Fn+Right
 
+# Add directories to path if they exist
+function prependtopath {
+    if [ -d $1 ] ; then
+        path=($1 $path)
+    fi
+}
+
+typeset -U path # Prevent duplicate elements in path.
+
+# These are added in reverse order because they're prepended to the path. List
+# them in reverse precedence.
+prependtopath ~/.krew/bin
+prependtopath ~/go/bin
+prependtopath ~/bin
+
+export PATH # Export again to make updated path available to subshells.
+
 # Source files if they exist
 function zsource {
     [[ -s "$1" ]] && source $1
