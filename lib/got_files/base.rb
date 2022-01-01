@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GotFiles
   class Base
     include FileUtils
@@ -26,7 +28,7 @@ module GotFiles
       system %(git -C "#{path}" submodule -q update)
     end
 
-    def install_file(file, dot = true)
+    def install_file(file, dot: true)
       files = [file].flatten.map { |f| File.expand_path(f) }
       files.each do |f|
         source = install_file_source(f)
@@ -41,14 +43,14 @@ module GotFiles
       return if package_installed?(package_name(package))
 
       puts "Installing #{name}..." if name
-      system("brew install #{package}", :out => File::NULL)
+      system("brew install #{package}", out: File::NULL)
     end
 
     def brew_cask_install_if_missing(package, name = nil)
       return if package_installed?(package_name(package))
 
       puts "Installing #{name}..." if name
-      system("brew install --cask #{package}", :out => File::NULL)
+      system("brew install --cask #{package}", out: File::NULL)
     end
 
     def plistbuddy(command, plist)
@@ -72,35 +74,36 @@ module GotFiles
       system("ln -nfs '#{source}' '#{target}'")
     end
 
-    def has_dot?(file)
-      File.basename(file)[0] == '.'
+    def dot?(file)
+      File.basename(file)[0] == "."
     end
 
     def install_file_source(file)
-      if file.include? ENV['HOME']
+      if file.include? ENV["HOME"]
         file
       else
         "#{ENV['PWD']}/#{file}"
       end
     end
 
-    def install_file_target(file, dot = true)
+    def install_file_target(file, dot: true)
       target = "#{ENV['HOME']}/"
-      target << '.' unless has_dot?(file) || dot == false
+      target << "." unless dot?(file) || dot == false
       target << File.basename(file)
     end
 
     def package_installed?(package)
-      system("brew list | grep ^#{package}$", :out => File::NULL)
+      system("brew list | grep ^#{package}$", out: File::NULL)
     end
 
     def package_name(package)
-      return package.split('/')[-1] if package.include?('/')
+      return package.split("/")[-1] if package.include?("/")
+
       package
     end
 
     def run(cmd)
-      `#{cmd}` unless ENV['DEBUG']
+      `#{cmd}` unless ENV["DEBUG"]
     end
   end
 end
