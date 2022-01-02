@@ -49,6 +49,9 @@ set showmatch                   " Show matching brackets/parenthesis
 set scrolloff=5                 " Show at least 5 lines above or below the cursor
 syntax enable                   " Enable syntax highlighting
 
+autocmd FileType json setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
 " More intuitive arrow mappings for wildmenu
 " https://vi.stackexchange.com/questions/22627/switching-arrow-key-mappings-for-wildmenu-tab-completion
 set wildcharm=<C-Z>
