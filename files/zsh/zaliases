@@ -8,3 +8,7 @@ alias ls="ls --color=auto"
 
 # Git
 alias ga="git add"
+alias gfo="git fetch origin"
+alias grom="git rebase origin/master"
+alias gsuk="git stash -u -k"
+alias gwds="git diff --no-ext-diff --staged"
