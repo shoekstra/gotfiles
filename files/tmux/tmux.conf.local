@@ -311,10 +311,9 @@ bind-key C-a last-window
 #set -g status-position top
 
 # List of plugins
-set -g @tpm_plugins '          \
-  tmux-plugins/tpm             \
-  tmux-plugins/tmux-sensible   \
-'
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+# set -g @plugin 'odedlaz/tmux-onedark-theme'
 
 # Workaround for automatic TPM installation
 # See https://github.com/tmux-plugins/tpm/issues/105
