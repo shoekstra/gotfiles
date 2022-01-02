@@ -47,11 +47,11 @@ syntax enable                   " Enable syntax highlighting
 " More intuitive arrow mappings for wildmenu
 " https://vi.stackexchange.com/questions/22627/switching-arrow-key-mappings-for-wildmenu-tab-completion
 set wildcharm=<C-Z>
-let edit_re = 'e\%[dit] '
-cnoremap <expr> <up> getcmdline() =~# edit_re && wildmenumode() ? "\<left>" : "\<up>"
-cnoremap <expr> <down> getcmdline() =~# edit_re && wildmenumode() ? "\<right>" : "\<down>"
-cnoremap <expr> <left> getcmdline() =~# edit_re && wildmenumode() ? "\<up>" : "\<left>"
-cnoremap <expr> <right> getcmdline() =~# edit_re && wildmenumode() ? " \<bs>\<C-Z>" : "\<right>"
+let open_re = '\(e\%[dit]\|\%[v]new\) '
+cnoremap <expr> <up> getcmdline() =~# open_re && wildmenumode() ? "\<left>" : "\<up>"
+cnoremap <expr> <down> getcmdline() =~# open_re && wildmenumode() ? "\<right>" : "\<down>"
+cnoremap <expr> <left> getcmdline() =~# open_re && wildmenumode() ? "\<up>" : "\<left>"
+cnoremap <expr> <right> getcmdline() =~# open_re && wildmenumode() ? " \<bs>\<C-Z>" : "\<right>"
 
 " Clipboard
 if has('clipboard')
