@@ -16,3 +16,14 @@ alias gwds="git diff --no-ext-diff --staged"
 # Kubernetes
 (($+commands[kubectx])) && alias kc="kubectx"
 (($+commands[kubens])) && alias kns="kubens"
+
+# Terraform
+if (($+commands[terraform])); then
+  alias t="terraform"
+  alias ta="terraform apply"
+  alias ti="terraform init"
+  alias tc="terraform console"
+  alias tp="terraform plan"
+  alias ts="terraform state"
+  alias tv="terraform validate"
+fi
