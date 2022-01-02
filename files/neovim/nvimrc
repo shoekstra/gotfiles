@@ -44,6 +44,15 @@ set showmatch                   " Show matching brackets/parenthesis
 set scrolloff=5                 " Show at least 5 lines above or below the cursor
 syntax enable                   " Enable syntax highlighting
 
+" More intuitive arrow mappings for wildmenu
+" https://vi.stackexchange.com/questions/22627/switching-arrow-key-mappings-for-wildmenu-tab-completion
+set wildcharm=<C-Z>
+let edit_re = 'e\%[dit] '
+cnoremap <expr> <up> getcmdline() =~# edit_re && wildmenumode() ? "\<left>" : "\<up>"
+cnoremap <expr> <down> getcmdline() =~# edit_re && wildmenumode() ? "\<right>" : "\<down>"
+cnoremap <expr> <left> getcmdline() =~# edit_re && wildmenumode() ? "\<up>" : "\<left>"
+cnoremap <expr> <right> getcmdline() =~# edit_re && wildmenumode() ? " \<bs>\<C-Z>" : "\<right>"
+
 " Clipboard
 if has('clipboard')
     if has('unnamedplus') " When possible use + register for copy-paste
