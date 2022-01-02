@@ -10,7 +10,6 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'airblade/vim-gitgutter'
-Plug 'altercation/vim-colors-solarized'
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'dense-analysis/ale'
 Plug 'easymotion/vim-easymotion'
@@ -21,6 +20,7 @@ Plug 'hashivim/vim-hashicorp-tools'
 Plug 'mhinz/vim-startify'
 Plug 'raimondi/delimitmate'
 Plug 'sirver/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
@@ -65,6 +65,16 @@ if has('clipboard')
     else " On mac and Windows, use * register for copy-paste
         set clipboard=unnamed
     endif
+endif
+
+" Colour scheme
+colorscheme onehalfdark
+let g:airline_theme='onehalfdark'
+
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
 endif
 
 " Search
@@ -135,10 +145,6 @@ let g:LanguageClient_serverCommands = {
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
-
-" Solarized
-set background=dark
-colorscheme solarized
 
 let g:UltiSnipsExpandTrigger = "<C-j>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
