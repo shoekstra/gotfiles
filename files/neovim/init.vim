@@ -1,6 +1,3 @@
-" Path to python3 bin
-let g:python3_host_prog = '/usr/local/bin/python3'
-
 " Plugins - install vim-plug then load them
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent execute '!curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -17,6 +14,7 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'godlygeek/tabular'
 Plug 'hashivim/vim-hashicorp-tools'
+Plug 'lnl7/vim-nix'
 Plug 'mhinz/vim-startify'
 Plug 'raimondi/delimitmate'
 Plug 'sirver/ultisnips' | Plug 'honza/vim-snippets'

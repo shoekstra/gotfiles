@@ -9,12 +9,6 @@ module GotFiles
 
       brew_install_if_missing("coreutils") # required gdircolors and gls
       brew_install_if_missing("ccat", "ccat")
-      brew_install_if_missing("rename", "rename")
-
-      # Git tools
-      brew_install_if_missing("hub", "hub")
-      brew_install_if_missing("github/gh/gh", "GitHub CLI")
-      brew_install_if_missing("zaquestion/tap/lab", "GitLab CLI")
 
       install_fzf
       install_zim

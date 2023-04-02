@@ -6,7 +6,6 @@ namespace "install" do
     require "got_files/Gpg"
 
     gpg = GotFiles::Gpg.new
-    gpg.install
     gpg.setup(args[:key_to_import])
   end
 end
