@@ -4,20 +4,10 @@ require "got_files/base"
 
 module GotFiles
   class Neovim < Base
-    def install
-      puts "Checking for dependencies..."
-
-      brew_install_if_missing("cmake", "CMake")
-      brew_install_if_missing("go", "Golang")
-      brew_install_if_missing("python", "Python 3")
-
-      brew_install_if_missing("neovim", "Neovim")
-
+    def setup
       system("pip3 install --upgrade pynvim --user", out: File::NULL)
       system("pip3 install --upgrade neovim --user", out: File::NULL)
-    end
 
-    def setup
       system('defaults write com.googlecode.iterm2 "Draw Powerline Glyphs" -bool true')
 
       mkdir_p File.expand_path("~/.config/nvim/backup")

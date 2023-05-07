@@ -4,17 +4,10 @@ require "got_files/base"
 
 module GotFiles
   class Terminal < Base
-    def install
-      brew_cask_install_if_missing("iterm2", "iTerm2")
-
-      brew_install_if_missing("coreutils") # required gdircolors and gls
-      brew_install_if_missing("ccat", "ccat")
-
-      install_fzf
-      install_zim
-    end
-
     def setup
+      setup_fzf
+      setup_zim
+
       # Use gnu dircolors and ls
       %w[dircolors ls].each do |f|
         symlink("/usr/local/bin/g#{f}",
@@ -42,14 +35,12 @@ module GotFiles
 
     private
 
-    def install_fzf
-      brew_install_if_missing("fzf", "fzf")
-
+    def setup_fzf
       system("$(brew --prefix)/opt/fzf/install --key-bindings --no-update-rc --no-bash --no-fish --completion",
              out: File::NULL)
     end
 
-    def install_zim
+    def setup_zim
       unless File.exist?(File.join(ENV["HOME"], ".zim"))
         system("curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh")
       end

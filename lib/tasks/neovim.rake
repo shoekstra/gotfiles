@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
-namespace "install" do
-  desc "install and setup Neovim"
+namespace "setup" do
+  desc "setup Neovim"
   task :neovim do
     require "got_files/neovim"
 
     neovim = GotFiles::Neovim.new
-    neovim.install
     neovim.setup
   end
 end

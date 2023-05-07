@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
-namespace "install" do
-  desc "install and setup Tmux"
+namespace "setup" do
+  desc "setup Tmux"
   task :tmux do
     require "got_files/tmux"
 
     tmux = GotFiles::Tmux.new
-    tmux.install
     tmux.setup
   end
 end
