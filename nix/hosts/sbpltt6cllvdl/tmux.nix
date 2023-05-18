@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
-{
+let
+
+  lib = import ../../lib;
+
+in {
   home.packages = with pkgs; [
     reattach-to-user-namespace
     tmux
@@ -14,6 +18,6 @@
        sha256 = "sha256-o126SathIT49Mj9EZDhlYF5i3EgRe2HFZkoGXTVQBbw=";
     } + "/.tmux.conf";
 
-    ".tmux.conf.local".source = ../../../files/tmux/tmux.conf.local;
+    ".tmux.conf.local".source = lib.dotFilePath "tmux/tmux.conf.local";
   };
 }

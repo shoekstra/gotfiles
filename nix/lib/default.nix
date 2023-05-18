@@ -1,0 +1,3 @@
+{
+  dotFilePath = file: ../../files + "/${file}";
+}
