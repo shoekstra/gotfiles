@@ -79,6 +79,7 @@ z4h source ~/.chef/functions.zsh
 
 # Use additional Git repositories pulled in with `z4h install`.
 z4h load    agkozak/zsh-z                             # jump to frequently visited directories
+z4h load    ohmyzsh/ohmyzsh/plugins/kubectl           # kubectl goodness
 z4h load    zimfw/git                                 # git aliases
 z4h load    zimfw/utility                             # utility aliases and functions
 z4h source  viko16/gitcd.plugin.zsh/gitcd.plugin.zsh  # git clone and change directory by a single command
