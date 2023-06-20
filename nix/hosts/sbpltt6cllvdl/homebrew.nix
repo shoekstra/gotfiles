@@ -91,7 +91,6 @@
     "mtr"
     "mysql-client"
     "ncdu"
-    "neovim"
     "nghttp2"
     "node"
     "norwoodj/tap/helm-docs"
