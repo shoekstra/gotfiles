@@ -59,16 +59,17 @@ Install everything:
 bundle exec rake install
 ```
 
-Set iTerm2 to use Natural Text Editing:
+### iTerm2
 
-1. Open Preferences
-1. Click "Profile" tab
-1. Select a profile in the list on the left (eg "Default") and click "Keys" tab
-1. Click the "Presets" downdown and select "Natural Text Editing"
+First [install the One Half iTerm2 theme](https://github.com/sonph/onehalf#iterm2):
 
-[Install One Half iTerm2 theme](https://github.com/sonph/onehalf#iterm2).
-
-Install iTerm2 theme:
 1. Download iTerm2 One Half Dark preset: `wget -O /tmp/OneHalfDark.itermcolors https://raw.githubusercontent.com/sonph/onehalf/master/iterm/OneHalfDark.itermcolors`
 1. Install preset: `open /tmp/OneHalfDark.itermcolors`
 1. In iTerm: Preferences > Profiles > Colors, choose OneHalfDark
+
+Load the `plist` file in this repository:
+
+1. Open Preferences
+1. Click "Preferences" tab
+1. Select "Load preferences from a custom folder or URL"
+1. Enter the path to `files/iterm2/com.googlecode.iterm2.plist` in this rep
