@@ -17,7 +17,7 @@ in {
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-  home-manager.users."shoekstra" = import ./home.nix;
+  home-manager.users."shoekstra" = import ../../users/shoekstra/home.nix;
 
   # This needs to be to set for things to work (see https://github.com/LnL7/nix-darwin/issues/423)
   users.users."shoekstra" = {
