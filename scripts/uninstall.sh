@@ -6,6 +6,8 @@ if [ -x "home-manager" ]; then
 fi
 
 echo "==> Uninstalling Nix..."
-/nix/nix-installer uninstall
+if [ -e "/nix/nix-installer" ]; then
+    /nix/nix-installer uninstall
+fi
 
 echo "==> Uninstall complete!"

@@ -15,7 +15,7 @@ echo "==> Running first build..."
 nix build "./nix#darwinConfigurations.$(hostname).system" --extra-experimental-features "nix-command flakes"
 
 # Manual steps for nix-darwin to work with flakes
-grep -q "private/var/run" /etc/synthetic.conf || printf 'run\tprivate/var/run\n' | sudo tee -a /etc/synthetic.conf
+sudo grep -q "private/var/run" /etc/synthetic.conf || printf 'run\tprivate/var/run\n' | sudo tee -a /etc/synthetic.conf
 /System/Library/Filesystems/apfs.fs/Contents/Resources/apfs.util -t
 
 for file in /etc/bashrc /etc/nix/nix.conf /etc/zshrc; do
@@ -26,7 +26,9 @@ echo "==> Running first switch..."
 
 ./result/sw/bin/darwin-rebuild switch --flake ./nix
 
-grep -q "/etc/static/zshrc" /etc/zshrc || echo 'if test -e /etc/static/zshrc; then . /etc/static/zshrc; fi' | sudo tee -a /etc/zshrc
+if [ -e "/etc/zshrc" ]; then
+    grep -q "/etc/static/zshrc" /etc/zshrc || echo 'if test -e /etc/static/zshrc; then . /etc/static/zshrc; fi' | sudo tee -a /etc/zshrc
+fi
 
 echo "==> Setup complete!"
 echo "Run \"darwin-rebuild switch --flake ./nix\" to rebuild your configuration after any changes"
