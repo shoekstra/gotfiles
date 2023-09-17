@@ -6,6 +6,11 @@ for file in /etc/*.backup-before-nix; do
     [ -e "${file}" ] && sudo rm -v ${file}
 done
 
+if [ -d "~/.config/nix" ]; then
+    mkdir -p ~/.config/nix
+    echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
+fi
+
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 
 echo "==> Running first build..."

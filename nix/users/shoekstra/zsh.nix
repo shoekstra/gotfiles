@@ -34,6 +34,9 @@ in {
       # Configure gitcd plugin
       GITCD_HOME = "$HOME/git";
       GITCD_USEHOST = "false";
+
+      # Install new terraform versions without prompting
+      CHTF_AUTO_INSTALL = "yes";
     };
 
     shellAliases = {
@@ -47,7 +50,9 @@ in {
       ll = "ls -l";
 
       # Git aliases missing from plugin
+      gcopdm = "() { gco $1 && git pull origin $1 && (git branch --merged | grep -v '\*' | xargs -n 1 git branch -d) }";
       gfo = "gf origin";
+      gpo = "git pull origin";
       grom = "gr origin/master";
       gsuk = "gsw"; # This just makes more sense to me
       gwds = "gwd --staged";

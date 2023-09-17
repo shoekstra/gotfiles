@@ -34,4 +34,49 @@ in {
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # Packages with modules to configure them.
+  programs = {
+    bat = {
+      enable = true;
+
+      config.theme = "OneHalfDark";
+    };
+
+    git = {
+      enable = true;
+
+      userName = "Stephen Hoekstra";
+      userEmail = "shoekstra@schubergphilis.com";
+
+      aliases = {
+        personal = "config user.email stephenhoekstra@gmail.com";
+        unstage = "reset HEAD --";
+      };
+
+      extraConfig = {
+        core.whitespace = "trailing-space,space-before-tab";
+        credential.helper = "osxkeychain";
+      };
+
+      signing.key = "DBB82B1442BFA582";
+    };
+  };
+
+  programs.gh-dash.enable = true;
+  programs.gh.enable = true;
+  programs.gpg.enable = true;
+  programs.htop.enable = true;
+  programs.k9s.enable = true;
+  programs.lazygit.enable = true;
+
+  # Packages without modules to configure them.
+  home.packages = with pkgs; [
+    fpp
+    jq
+    mc
+    rename
+    tree
+    yq-go
+  ];
 }

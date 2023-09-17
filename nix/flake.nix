@@ -20,5 +20,13 @@
         ./hosts/sbpltt6cllvdl/default.nix
       ];
     };
+    darwinConfigurations."sbplt4w6p3hjt" = darwin.lib.darwinSystem {
+      system = "aarch64-darwin";
+
+      modules = [
+        home-manager.darwinModules.home-manager
+        ./hosts/sbplt4w6p3hjt/default.nix
+      ];
+    };
   };
 }

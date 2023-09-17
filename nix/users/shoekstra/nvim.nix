@@ -10,7 +10,7 @@ in {
     (python3.withPackages(ps: with ps; [ pynvim ]))
 
     # Packages used by neovim config
-    hadolint
+    # hadolint -- has a broken dependency, will look into it another time
     nodePackages.markdownlint-cli
     shellcheck
     tree-sitter

@@ -1,23 +1,40 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
-let
-
-  lib = import ../../lib;
-
-in {
+{
   home.packages = with pkgs; [
     reattach-to-user-namespace
-    tmux
   ];
 
-  home.file = {
-    ".tmux.conf".source = pkgs.fetchFromGitHub {
-       owner = "gpakosz";
-       repo = ".tmux";
-       rev = "7706ab724f3811479a358c6f9ea6aeb6decece5f";
-       sha256 = "sha256-o126SathIT49Mj9EZDhlYF5i3EgRe2HFZkoGXTVQBbw=";
-    } + "/.tmux.conf";
+  programs.tmux = {
+    enable = true;
+    baseIndex = 1;
+    historyLimit = 50000;
+    keyMode = "vi";
+    mouse = true;
+    prefix = "C-a";
+    sensibleOnTop = false;
+    terminal = "xterm-256color";
 
-    ".tmux.conf.local".source = lib.dotFilePath "tmux/tmux.conf.local";
+    extraConfig = ''
+      # Switch to last window, screen style
+      bind-key a send-prefix
+      bind-key C-a last-window
+
+      # Apply true color
+      set-option -ga terminal-overrides ",xterm-256color:Tc"
+    '';
+
+    plugins = with pkgs; [
+      # Waiting for https://github.com/NixOS/nixpkgs/pull/191517 to be merged
+      (tmuxPlugins.sensible.overrideAttrs ( _: {
+        version = "unstable-2022-08-14";
+        src = fetchFromGitHub {
+          owner = "tmux-plugins";
+          repo = "tmux-sensible";
+          rev = "25cb91f42d020f675bb0a2ce3fbd3a5d96119efa";
+          sha256 = "sha256-sw9g1Yzmv2fdZFLJSGhx1tatQ+TtjDYNZI5uny0+5Hg=";
+        };
+      }))
+    ];
   };
 }
