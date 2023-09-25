@@ -57,6 +57,7 @@ in {
       gsuk = "gsw"; # This just makes more sense to me
       gwds = "gwd --staged";
 
+      s = "switch";
       tree = "tree -a -I .git";
     };
 

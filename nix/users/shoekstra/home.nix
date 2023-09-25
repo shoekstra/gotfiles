@@ -74,8 +74,15 @@ in {
   home.packages = with pkgs; [
     fpp
     jq
+    krew
+    kubectl
+    kubernetes-helm
+    kustomize
     mc
+    minikube
+    popeye
     rename
+    stern
     tree
     yq-go
   ];

@@ -53,6 +53,7 @@ zstyle ':zim:git' aliases-prefix 'g'
 # This doesn't do anything apart from cloning the repository and keeping it
 # up-to-date. Cloned files can be used after `z4h init`.
 z4h install agkozak/zsh-z || return
+z4h install ohmyzsh/ohmyzsh || return
 z4h install viko16/gitcd.plugin.zsh || return
 z4h install zimfw/git || return
 z4h install zimfw/utility || return
@@ -113,3 +114,8 @@ source "$(brew --prefix)/share/chtf/chtf.sh"
 if [[ -f "$HOME/.terraform-version" ]]; then
     chtf "$(< "$HOME/.terraform-version")"
 fi
+
+# Kubeswitch setup.
+source <(switcher init zsh)
+source <(alias s=switch) # optionally use alias `s` instead of `switch`
+source <(compdef _switcher switch)
