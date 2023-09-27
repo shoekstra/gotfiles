@@ -80,6 +80,7 @@ in {
     kustomize
     mc
     minikube
+    mycli
     popeye
     rename
     stern

@@ -16,6 +16,7 @@
   ];
 
   homebrew.casks = [
+    "beekeeper-studio"
     "docker"
     "iterm2"
     "maccy" # clipboard manager https://maccy.app
