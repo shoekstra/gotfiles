@@ -5,12 +5,7 @@ return {
       servers = {
         bashls = {},
         diagnosticls = {},
-        dockerls = {},
-        gopls = {},
-        marksman = {},
         sqlls = {},
-        terraformls = {},
-        yamlls = {},
       },
     },
   },

@@ -85,6 +85,7 @@ in {
     rename
     stern
     tree
+    wget
     yq-go
   ];
 }
