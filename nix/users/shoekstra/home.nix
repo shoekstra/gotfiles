@@ -72,6 +72,7 @@ in {
 
   # Packages without modules to configure them.
   home.packages = with pkgs; [
+    awscli2
     fpp
     jq
     krew

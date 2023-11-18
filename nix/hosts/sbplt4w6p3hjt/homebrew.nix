@@ -11,6 +11,7 @@
     "goreleaser"
     "qemu"  # For some reason minikube wants this installed via homebrew
     "socket_vmnet"
+    "theurichde/go-aws-sso/go-aws-sso"
     "vcluster"
     "yleisradio/terraforms/chtf"
   ];
