@@ -22,6 +22,7 @@
     "iterm2"
     "maccy" # clipboard manager https://maccy.app
     "microsoft-remote-desktop"
+    "oktadeveloper/tap/okta"
     "postman"
     "skitch"
     "spotify"
